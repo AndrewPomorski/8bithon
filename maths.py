@@ -34,7 +34,3 @@ def sub_HX(numA, numB):
 		dec_nums_buff.append(convert_hex_dec(hexnum))
 	DIFF = dec_nums_buff[0] - dec_nums_buff[1]
 	return DIFF
-
-
-
-

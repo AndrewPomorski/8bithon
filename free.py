@@ -1,4 +1,4 @@
-from globals import MEMCAP
+from _globals import MEMCAP
 
 def free(address):
 	freed = False

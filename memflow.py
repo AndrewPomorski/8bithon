@@ -1,3 +1,5 @@
+from _globals import MEMCAP
+
 def check_free_bytes(registry):
 	TAKEN_ADD = 0
 	for addr in registry:
@@ -6,3 +8,6 @@ def check_free_bytes(registry):
 	free_bytes = len(MEMCAP) - TAKEN_ADD
 	return free_bytes
 
+
+
+		

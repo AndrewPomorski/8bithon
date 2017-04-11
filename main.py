@@ -10,10 +10,11 @@ def file_entry():
 			tokenization purposes, might be changed
 			'''
 			input_data = list(input_data)
-			return input_data
+			return [input_data, in_file_name]
 	except IndexError:
 		print 'No input file'
 
 
 if __name__ == '__main__':
 	data = file_entry()
+	
