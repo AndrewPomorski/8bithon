@@ -3,12 +3,19 @@ from archi import *
 from display import displayScreen 
 import time
 import pygame
+import random
 
 TIMER = pygame.USEREVENT + 1
 
 screen = displayScreen(scale_factor=10)
 screen.init_display()
-
+'''
+############
+TODO!!!
+Change the way pc is handled, instead of incrementing after the execLoop, it needs to be returned from decoding functions
+Right now the GOTO cannot be implemented
+#############
+'''
 def sysinit():    
     # instantiate display and initialize screen
     print("Checking sysinit...")
@@ -74,7 +81,7 @@ def decode_oc(opcode):
     #opcode signature - first HEX bit
     ocs = opcode[2]
     if ocs == "0":
-        return cas_0(opcode)
+        cas_0(opcode)
     elif ocs == "1":
         return "one"
     elif ocs == "2":
@@ -197,10 +204,14 @@ def cas_C(oc):
         Set VX to result of bitwise AND on NN and random number between 0 and 255
         OC: 0xCXNN
     '''
+    global c_flag
+    c_flag = "RAND"
+    print "CARRY FLAG: ", c_flag
     X = int(oc[3], 16)
     NN = int(oc[4:6], 16)
-    return 
-
+    RN = random.randint(0,255)
+    V[X] = X & RN
+    
 def cas_D(oc):
     #draw instructions
     global c_flag
