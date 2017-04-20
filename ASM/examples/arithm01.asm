@@ -7,5 +7,7 @@ set	v4, 0x8  		// Set v4 to 8
 mov	v4, v3	 		// Move value from v4 to v3 (Erases v4)
 set 	v5, 0xF			
 timr	v5			// Sets timer to value of v5, and starts counting down 60Mhz
-skip	v5, 0xF			// Skips next instruction if v5 equals to 15 (True)
+ife	v5, 0xF			// Skips next instruction if v5 == 15 (True)
+ifn	v5, 0xF			// Skips next instruction if v5 != 15 (False)
+ifr	v5, v4			// Skips next instruction if v5 == v4
 jmp	0x200	 		// Jump to memory location 512 (first instruction)

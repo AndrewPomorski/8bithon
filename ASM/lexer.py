@@ -1,4 +1,5 @@
 import ply.lex as lex
+from p8asm import data
 
 #reserved words
 reserved = (
@@ -7,6 +8,9 @@ reserved = (
         'RAND',
         'MOV',
         'JMP',
+        'IFE',
+        'IFN',
+        'IFR',
 )
 
 tokens = reserved + (
@@ -62,15 +66,16 @@ def t_error(t):
 lexer = lex.lex()
 
 ########TESTS#########
-data = '''
+'''
+data = 
 set     v0, 0x0 
 set     v1, 0x0
 draw    v0, v1
 rand    v3, 0xF
 mov     v0, vF
 jmp     0x001
-'''
 
+'''
 registers = '''
 v0
 v1
@@ -81,6 +86,7 @@ v4'''
 lexer.input(data)
 
 #Tokenize
+
 while True:
     tok = lexer.token()
     if not tok:
