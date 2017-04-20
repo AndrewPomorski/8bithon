@@ -1,5 +1,4 @@
 import ply.lex as lex
-from p8asm import data
 
 #reserved words
 reserved = (
@@ -66,15 +65,10 @@ def t_error(t):
 lexer = lex.lex()
 
 ########TESTS#########
-'''
-data = 
+data = '''
 set     v0, 0x0 
 set     v1, 0x0
-draw    v0, v1
-rand    v3, 0xF
 mov     v0, vF
-jmp     0x001
-
 '''
 registers = '''
 v0
@@ -91,5 +85,4 @@ while True:
     tok = lexer.token()
     if not tok:
         break #no more input
-    print(tok)
 #######ENDTEST#########

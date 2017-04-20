@@ -1,0 +1,7 @@
+set	v0, 0x001
+mov	v0, v2
+ife 	v2, 0x001
+ifn 	v0, 0x000F
+ifr	v0, v2
+set	v5, 0x000F
+jmp 	0x200

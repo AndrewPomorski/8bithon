@@ -1,0 +1,263 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMENT
+    RAND
+    DRAW
+    ID
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> SET REG COMMA ADDR NEWLINE
+Rule 2     expression -> MOV REG COMMA REG NEWLINE
+Rule 3     expression -> IFE REG COMMA ADDR NEWLINE
+Rule 4     expression -> IFN REG COMMA ADDR NEWLINE
+Rule 5     expression -> IFR REG COMMA REG NEWLINE
+Rule 6     expression -> JMP ADDR NEWLINE
+
+Terminals, with rules where they appear
+
+ADDR                 : 1 3 4 6
+COMMA                : 1 2 3 4 5
+COMMENT              : 
+DRAW                 : 
+ID                   : 
+IFE                  : 3
+IFN                  : 4
+IFR                  : 5
+JMP                  : 6
+MOV                  : 2
+NEWLINE              : 1 2 3 4 5 6
+RAND                 : 
+REG                  : 1 2 2 3 4 5 5
+SET                  : 1
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . SET REG COMMA ADDR NEWLINE
+    (2) expression -> . MOV REG COMMA REG NEWLINE
+    (3) expression -> . IFE REG COMMA ADDR NEWLINE
+    (4) expression -> . IFN REG COMMA ADDR NEWLINE
+    (5) expression -> . IFR REG COMMA REG NEWLINE
+    (6) expression -> . JMP ADDR NEWLINE
+
+    SET             shift and go to state 1
+    MOV             shift and go to state 4
+    IFE             shift and go to state 5
+    IFN             shift and go to state 6
+    IFR             shift and go to state 2
+    JMP             shift and go to state 3
+
+    expression                     shift and go to state 7
+
+state 1
+
+    (1) expression -> SET . REG COMMA ADDR NEWLINE
+
+    REG             shift and go to state 8
+
+
+state 2
+
+    (5) expression -> IFR . REG COMMA REG NEWLINE
+
+    REG             shift and go to state 9
+
+
+state 3
+
+    (6) expression -> JMP . ADDR NEWLINE
+
+    ADDR            shift and go to state 10
+
+
+state 4
+
+    (2) expression -> MOV . REG COMMA REG NEWLINE
+
+    REG             shift and go to state 11
+
+
+state 5
+
+    (3) expression -> IFE . REG COMMA ADDR NEWLINE
+
+    REG             shift and go to state 12
+
+
+state 6
+
+    (4) expression -> IFN . REG COMMA ADDR NEWLINE
+
+    REG             shift and go to state 13
+
+
+state 7
+
+    (0) S' -> expression .
+
+
+
+state 8
+
+    (1) expression -> SET REG . COMMA ADDR NEWLINE
+
+    COMMA           shift and go to state 14
+
+
+state 9
+
+    (5) expression -> IFR REG . COMMA REG NEWLINE
+
+    COMMA           shift and go to state 15
+
+
+state 10
+
+    (6) expression -> JMP ADDR . NEWLINE
+
+    NEWLINE         shift and go to state 16
+
+
+state 11
+
+    (2) expression -> MOV REG . COMMA REG NEWLINE
+
+    COMMA           shift and go to state 17
+
+
+state 12
+
+    (3) expression -> IFE REG . COMMA ADDR NEWLINE
+
+    COMMA           shift and go to state 18
+
+
+state 13
+
+    (4) expression -> IFN REG . COMMA ADDR NEWLINE
+
+    COMMA           shift and go to state 19
+
+
+state 14
+
+    (1) expression -> SET REG COMMA . ADDR NEWLINE
+
+    ADDR            shift and go to state 20
+
+
+state 15
+
+    (5) expression -> IFR REG COMMA . REG NEWLINE
+
+    REG             shift and go to state 21
+
+
+state 16
+
+    (6) expression -> JMP ADDR NEWLINE .
+
+    $end            reduce using rule 6 (expression -> JMP ADDR NEWLINE .)
+
+
+state 17
+
+    (2) expression -> MOV REG COMMA . REG NEWLINE
+
+    REG             shift and go to state 22
+
+
+state 18
+
+    (3) expression -> IFE REG COMMA . ADDR NEWLINE
+
+    ADDR            shift and go to state 23
+
+
+state 19
+
+    (4) expression -> IFN REG COMMA . ADDR NEWLINE
+
+    ADDR            shift and go to state 24
+
+
+state 20
+
+    (1) expression -> SET REG COMMA ADDR . NEWLINE
+
+    NEWLINE         shift and go to state 25
+
+
+state 21
+
+    (5) expression -> IFR REG COMMA REG . NEWLINE
+
+    NEWLINE         shift and go to state 26
+
+
+state 22
+
+    (2) expression -> MOV REG COMMA REG . NEWLINE
+
+    NEWLINE         shift and go to state 27
+
+
+state 23
+
+    (3) expression -> IFE REG COMMA ADDR . NEWLINE
+
+    NEWLINE         shift and go to state 28
+
+
+state 24
+
+    (4) expression -> IFN REG COMMA ADDR . NEWLINE
+
+    NEWLINE         shift and go to state 29
+
+
+state 25
+
+    (1) expression -> SET REG COMMA ADDR NEWLINE .
+
+    $end            reduce using rule 1 (expression -> SET REG COMMA ADDR NEWLINE .)
+
+
+state 26
+
+    (5) expression -> IFR REG COMMA REG NEWLINE .
+
+    $end            reduce using rule 5 (expression -> IFR REG COMMA REG NEWLINE .)
+
+
+state 27
+
+    (2) expression -> MOV REG COMMA REG NEWLINE .
+
+    $end            reduce using rule 2 (expression -> MOV REG COMMA REG NEWLINE .)
+
+
+state 28
+
+    (3) expression -> IFE REG COMMA ADDR NEWLINE .
+
+    $end            reduce using rule 3 (expression -> IFE REG COMMA ADDR NEWLINE .)
+
+
+state 29
+
+    (4) expression -> IFN REG COMMA ADDR NEWLINE .
+
+    $end            reduce using rule 4 (expression -> IFN REG COMMA ADDR NEWLINE .)
+
